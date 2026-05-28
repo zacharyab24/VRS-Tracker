@@ -1,0 +1,13 @@
+# Environment
+.env
+
+# Compiled binary
+vrs-tracker
+
+# Test cache and coverage
+*.test
+*.out
+
+# Go workspace
+go.work
+go.work.sum
