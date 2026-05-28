@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/joho/godotenv"
 )
@@ -15,7 +16,11 @@ type Config struct {
 
 // NewConfig loads configuration from a .env file and returns a populated Config.
 func NewConfig() (Config, error) {
-	if err := godotenv.Load(); err != nil {
+	exe, err := os.Executable()
+	if err != nil {
+		return Config{}, err
+	}
+	if err := godotenv.Load(filepath.Join(filepath.Dir(exe), ".env")); err != nil {
 		return Config{}, err
 	}
 
