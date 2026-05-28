@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
+	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stderr, nil)))
+
 	config, err := NewConfig()
 	if err != nil {
 		slog.Error("failed to load config", "err", err)
